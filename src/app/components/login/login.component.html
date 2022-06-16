@@ -1,0 +1,55 @@
+<div class="row">
+  <div class="col-lg-4"></div>
+  <div class="col-lg-4">
+    <div class="wrapper">
+      <div class="alert alert-success" role="alert">
+        {{ responseMessage }}
+      </div>
+      <h1>Login</h1>
+      <hr />
+      <form #loginForm="ngForm" (ngSubmit)="onSubmitHandler(loginForm.value)">
+
+        <div class="form-group">
+          <label for="">Email</label>
+          <input
+            type="text"
+            name="email"
+            class="form-control"
+            required
+            #email="ngModel"
+            ngModel
+            [class.is-invalid]="email.touched && email.invalid"
+
+          />
+          <small class="text-danger" [class.d-none]="email.untouched || email.valid">*Email is required </small>
+        </div>
+
+        <div class="form-group">
+          <label for="">Password</label>
+          <input
+            type="password"
+            name="password"
+            required
+            minlength="6"
+            #password="ngModel"
+            ngModel
+            [class.is-invalid]="password.touched && password.invalid"
+            class="form-control"
+          />
+          <small class="text-danger" [class.d-none]="password.untouched || password.valid" >*Password is required</small>
+        </div>
+
+        <input
+          type="submit"
+          value="Login"
+          [disabled]="loginForm.invalid"
+          class="btn btn-primary btn-block"
+        />
+        <br />
+        <a href="#">New User? Click Here</a>
+      </form>
+    </div>
+  </div>
+  <div class="col-lg-4"></div>
+</div>
+

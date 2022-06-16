@@ -1,0 +1,78 @@
+<div class="row">
+    <div class="col-lg-4"></div>
+    <div class="col-lg-4">
+        <div class="wrapper">
+            <h1>Register</h1>
+            <hr />
+            <form #registerForm="ngForm" (ngSubmit)="onSubmitHandler()">
+              <div class="form-group">
+                <label for="">First Name</label>
+                <input
+                  type="text"
+                  name="firstName"
+                  class="form-control"
+                  required
+                  [class.is-invalid]="firstName.invalid && firstName.touched"
+                  #firstName="ngModel"
+                  [(ngModel)]="userModel.firstName"
+                />
+                <small class="text-danger" [class.d-none]="firstName.untouched || firstName.valid">*First name is required</small>
+              </div>
+              <div class="form-group">
+                <label for="">Email</label>
+                <input
+                  type="text"
+                  name="email"
+                  class="form-control"
+                  required
+                  #email="ngModel"
+                  [class.is-invalid]="email.touched && email.invalid"
+                  [(ngModel)]="userModel.email"
+                />
+                <small class="text-danger" [class.d-none]="email.untouched || email.valid">*Email is required </small>
+              </div>
+              <div class="form-group">
+                <label for="">Mobile</label>
+                <input
+                  type="text"
+                  name="mobile"
+                  required
+                  #mobile="ngModel"
+                  [class.is-invalid]="mobile.touched && mobile.invalid"
+                  class="form-control"
+                  [(ngModel)]="userModel.mobile"
+                />
+                <small class="text-danger" [class.d-none]="mobile.untouched || mobile.valid" >*Mobile is required</small>
+              </div>
+              <div class="form-group">
+                <label for="">Password</label>
+                <input
+                  type="password"
+                  name="password"
+                  required
+                  minlength="6"
+                  #password="ngModel"
+                  [class.is-invalid]="password.touched && password.invalid"
+                  class="form-control"
+                  [(ngModel)]="userModel.password"
+                />
+                <!-- <div *ngIf="password.errors && (password.invalid || password.touched)">
+                  <small class="text-danger" *ngIf="password.errors.required">*Password is required</small>
+                  <small class="text-danger" *ngIf="password.errors.pattern">*Password should be 6 character long</small>
+                </div> -->
+                <small class="text-danger" [class.d-none]="password.untouched || password.valid" >*Password is required</small>
+              </div>
+
+              <input
+                type="submit"
+                value="Register"
+                [disabled]="registerForm.invalid"
+                class="btn btn-primary btn-block"
+              />
+              <br />
+              <a href="#">Already Register? Click Here</a>
+            </form>
+        </div>
+    </div>
+  <div class="col-lg-4"></div>
+</div>
